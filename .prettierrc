@@ -1,6 +1,6 @@
 {
-	"printWidth": 180,
-	"bracketSpacing": true,
+	"printWidth": 80,
+	"bracketSpacing": false,
 	"htmlWhitespaceSensitivity": "css",
 	"insertPragma": false,
 	"jsxBracketSameLine": true,
@@ -12,5 +12,5 @@
 	"singleQuote": true,
 	"tabWidth": 4,
 	"trailingComma": "none",
-	"useTabs": true
+	"useTabs": false
 }

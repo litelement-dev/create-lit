@@ -1,0 +1,3 @@
+templates/**/*.ts
+node_modules
+dist
