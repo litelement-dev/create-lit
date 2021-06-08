@@ -1,0 +1,11 @@
+\.DS_Store
+\.idea
+node_modules
+cred/2_script.sh.txt
+*.log
+.history/
+scripts/3_deploy_develop.sh.txt
+db
+dist/
+.env
+tmp.*
