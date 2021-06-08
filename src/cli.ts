@@ -14,15 +14,18 @@ create('create-lit', {
     run('yarn');
   },
   modifyName: (name) => {
-    if (name.includes('-')) return name;
-    else {
+    let modifiedName = name;
+
+    if (!name.includes('-')) {
       console.log('NOTE: Because your project name is not dash-case, \"element\" has been added as a suffix.');
-      return `${name}-element`;
+      modifiedName = `${name}-element`;
     }
+
+    return modifiedName.replace(/[0-9]/g, '');
   },
-  caveat: ({ answers }) => `
+  caveat: ({ name }) => `
     Successfully created your Lit project!
-    cd ${answers.name}
+    cd ${name}
     yarn dev
   `
 });
