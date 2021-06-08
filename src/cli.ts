@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
-import { create } from 'create-create-app';
-import { resolve } from 'path';
+import {create} from 'create-create-app';
+import {resolve} from 'path';
 
 const templateRoot = resolve(__dirname, '..', 'templates');
 
@@ -9,23 +9,30 @@ const templateRoot = resolve(__dirname, '..', 'templates');
 
 create('create-lit', {
   templateRoot,
-  after: ({ run }) => {
+  after: ({run}) => {
     console.log(`Installing npm packages with yarn...`);
     run('yarn');
   },
   modifyName: (name) => {
-    let modifiedName = name;
+    const regexDashCase = /^[a-z]+(-[a-z]+)*$/;
 
-    if (!name.includes('-')) {
-      console.log('NOTE: Because your project name is not dash-case, \"element\" has been added as a suffix.');
-      modifiedName = `${name}-element`;
+    if (!regexDashCase.test(name)) {
+      throw new Error('Project name must be dash-cased.');
     }
 
-    return modifiedName.replace(/[0-9]/g, '');
+    if (!name.includes('-')) {
+      console.log(`
+        NOTE: Because your project name is not dash-case,
+        \"element\" has been added as a suffix.`,
+      );
+      return `${name}-element`;
+    }
+
+    return name;
   },
-  caveat: ({ name }) => `
+  caveat: ({name}) => `
     Successfully created your Lit project!
     cd ${name}
     yarn dev
-  `
+  `,
 });
