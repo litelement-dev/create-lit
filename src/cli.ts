@@ -6,13 +6,9 @@ import {resolve} from 'path';
 const templateRoot = resolve(__dirname, '..', 'templates');
 
 // See https://github.com/uetchy/create-create-app/blob/master/README.md for the all options.
-
 create('create-lit', {
   templateRoot,
-  after: ({run}) => {
-    console.log(`Installing npm packages with yarn...`);
-    run('yarn');
-  },
+  promptForTemplate: true,
   modifyName: (name) => {
     const regexDashCase = /^[a-z]+(-[a-z]+)*$/;
 

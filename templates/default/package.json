@@ -10,7 +10,7 @@
     "lit": "^2.0.0-rc.2"
   },
   "devDependencies": {
-    "@types/node": "^15.12.1",
-    "vite": "^2.3.6"
+    "@types/node": "^15.12.2",
+    "vite": "^2.3.7"
   }
 }
