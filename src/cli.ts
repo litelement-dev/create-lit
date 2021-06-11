@@ -9,6 +9,12 @@ const templateRoot = resolve(__dirname, '..', 'templates');
 create('create-lit', {
   templateRoot,
   promptForTemplate: true,
+  extra: {
+    includeEslint: {
+      type: 'confirm',
+      describe: 'Include ESLint + Prettier?',
+    },
+  },
   modifyName: (name) => {
     const regexDashCase = /^[a-z]+(-[a-z]+)*$/;
 
@@ -25,6 +31,11 @@ create('create-lit', {
     }
 
     return name;
+  },
+  after: ({answers, run}) => {
+    if (answers.includeEslint) {
+      run('npx gts init');
+    }
   },
   caveat: ({name}) => `
     Successfully created your Lit project!
