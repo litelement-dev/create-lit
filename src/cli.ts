@@ -28,7 +28,9 @@ create('create-lit', {
   },
   caveat: ({name}) => `
     Successfully created your Lit project!
-    cd ${name}
-    yarn dev
+
+Now run:
+cd ${name}
+yarn dev
   `,
 });

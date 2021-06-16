@@ -1,7 +1,9 @@
 import { CtLit, html, customElement, css } from '@conectate/ct-lit';
 import { Page } from '@conectate/ct-router';
 import '@conectate/ct-router';
-
+/**
+ * @see https://www.npmjs.com/package/@conectate/ct-router
+ */
 @customElement('app-router')
 export class AppRouter extends CtLit {
 	static styles = [
@@ -11,6 +13,9 @@ export class AppRouter extends CtLit {
 			}
 		`
 	];
+	/** You can add more pages and behaviors
+	 * @see https://www.npmjs.com/package/@conectate/ct-router
+	 */
 	static pages: Page[] = [
 		{
 			path: '/',
