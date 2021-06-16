@@ -34,7 +34,7 @@ let development = process.env.NODE_ENV != 'production';
 export default (opts: any) => {
 	return defineConfig({
 		server: {
-			port: 8000
+			port: Number(process.env.PORT || 3000) 
 		},
 		define: {
 			'process.env.NODE_ENV': JSON.stringify(development ? 'development' : 'production'),
