@@ -1,0 +1,23 @@
+{
+  "name": "LitElement App",
+  "short_name": "LitElement App",
+  "description": "",
+  "icons": [
+    {
+      "src": "res/drawable/logo-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "res/drawable/logo-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "orientation": "portrait",
+  "start_url": "/",
+  "background_color": "#2084e8",
+  "display": "standalone",
+  "theme_color": "#2084e8",
+  "gcm_sender_id": "103953800507"
+}

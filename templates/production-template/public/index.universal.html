@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+	<meta charset="utf-8" />
+	<title>LitElement Starter Project</title>
+	<base href="/" />
+	<meta name="description" content="Template for LitElement Starter Project" />
+	<meta name="theme-color" content="#16478e" />
+	<meta name="viewport" content="width=device-width,initial-scale=1, minimum-scale=1, maximum-scale=1" />
+	<meta name="robots" content="index, follow" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=40" />
+	<!--<meta name="apple-itunes-app" content="app-id=1093787284" />-->
+	<link rel="canonical" href="https://github.com/conectate/lit-element-starter" id="canonical" />
+
+
+	<!-- Facebook’s Open Graph -->
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="https://github.com/conectate/lit-element-starter" />
+	<meta property="og:title" content="LitElement Starter Project" />
+	<meta property="og:site_name" content="LitElement Starter Project" />
+	<meta property="og:description" content="Template for LitElement Starter Project" />
+	<meta property=" og:image" content="/res/drawable/og/default.png" />
+	<!-- twitter -->
+	<meta name="twitter:card" content="app" />
+	<meta name="twitter:title" content="LitElement Starter Project" />
+	<meta name="twitter:description" content="Template for LitElement Starter Project" />
+	<meta name=" twitter:image" content="/res/drawable/og/default.png" />
+
+	<!-- Add to homescreen for Safari on iOS -->
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="#16478e" />
+	<meta name="apple-mobile-web-app-title" content="LitElement Starter Project" />
+
+	<!-- Homescreen icons -->
+	<link rel="apple-touch-startup-image" href="res/drawable/favicon.png" />
+	<link rel="apple-touch-icon" href="/favicon.png" />
+
+	<!-- Tile icon for Windows 8 (144x144 + tile color) -->
+	<meta name="msapplication-TileImage" content="res/drawable/favicon.png" />
+	<meta name="msapplication-TileColor" content="#16478e" />
+	<meta name="msapplication-tap-highlight" content="no" />
+
+	<!-- See https://goo.gl/OOhYW5 -->
+	<link rel="shortcut icon" type="image/svg+xml" href="/res/drawable/favicon.svg" />
+	<link rel="manifest" href="manifest.json" />
+
+	<style>
+		html {
+			height: 100%;
+			width: 100%;
+			max-height: 100%;
+			max-width: 100%;
+		}
+
+		body,
+		html {
+			position: relative;
+			margin: 0;
+			padding: 0;
+			font-size: 14px;
+			background: var(--color-background, #fff);
+			height: 100%;
+			font-family: 'Roboto', sans-serif !important;
+		}
+	</style>
+</head>
+
+<body>
+	<lit-app></lit-app>
+	<noscript>
+		Please enable JavaScript to view this website. v3.5.8
+	</noscript>
+	<script src="/node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+		<script
+			src="https://cdnjs.cloudflare.com/ajax/libs/systemjs/6.8.3/system.min.js"
+			integrity="sha512-dGQpe9Hb1dXjYT7TSrTS6qnRmzrhY9wsyRtN6BR2R+XgiXf5cpgvWVGPWptrarkfoldzpIkl7adWEddhoKsX6A=="
+			crossorigin="anonymous"
+			referrerpolicy="no-referrer"
+		></script>
+		<script>
+			System.import('/app.bundle.js');
+		</script>
+</body>
+
+</html>
