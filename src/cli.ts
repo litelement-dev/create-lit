@@ -9,12 +9,6 @@ const templateRoot = resolve(__dirname, '..', 'templates');
 create('create-lit', {
   templateRoot,
   promptForTemplate: true,
-  extra: {
-    includeEslint: {
-      type: 'confirm',
-      describe: 'Include ESLint + Prettier?',
-    },
-  },
   modifyName: (name) => {
     const regexDashCase = /^[a-z]+(-[a-z]+)*$/;
 
@@ -25,21 +19,14 @@ create('create-lit', {
     if (!name.includes('-')) {
       console.log(`
         NOTE: Because your project name is not dash-case,
-        \"element\" has been added as a suffix.`,
-      );
+        \"element\" has been added as a suffix.`);
       return `${name}-element`;
     }
 
     return name;
   },
-  after: ({answers, run}) => {
-    if (answers.includeEslint) {
-      run('npx gts init');
-    }
-  },
   caveat: ({name}) => `
     Successfully created your Lit project!
-
 Now run:
 cd ${name}
 yarn dev
