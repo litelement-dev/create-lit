@@ -1,0 +1,17 @@
+{
+  "name": "{{name}}",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build"
+  },
+  "dependencies": {
+    "lit": "^2.0.0-rc.2"
+  },
+  "devDependencies": {
+    "@types/node": "^14.11.2",
+    "vite": "^2.3.7"
+  }
+}
