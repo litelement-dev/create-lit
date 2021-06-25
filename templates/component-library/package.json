@@ -1,7 +1,14 @@
 {
-  "name": "{{name}}",
+  "name": "{{kebab name}}",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "./dist/{{kebab name}}.umd.js",
+  "module": "./dist/{{kebab name}}.es.js",
+  "exports": {
+    ".": {
+      "import": "./dist/{{kebab name}}.es.js",
+      "require": "./dist/{{kebab name}}.umd.js"
+    }
+  },
   "license": "MIT",
   "scripts": {
     "dev": "vite",
