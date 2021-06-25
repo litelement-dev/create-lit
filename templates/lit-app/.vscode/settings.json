@@ -1,5 +1,0 @@
-{
-	"typescript.tsdk": "node_modules/typescript/lib",
-    "lit-plugin.strict": true,
-	"editor.rulers": [180],
-}
