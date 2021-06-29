@@ -19,8 +19,7 @@ create('create-lit', {
     if (!name.includes('-')) {
       console.log(`
         NOTE: Because your project name is not dash-case,
-        \"element\" has been added as a suffix.`,
-      );
+        \"element\" has been added as a suffix.`);
       return `${name}-element`;
     }
 
@@ -28,7 +27,6 @@ create('create-lit', {
   },
   caveat: ({name}) => `
     Successfully created your Lit project!
-
 Now run:
 cd ${name}
 yarn dev
