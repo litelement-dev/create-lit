@@ -7,10 +7,10 @@
     "dev": "vite"
   },
   "dependencies": {
-    "lit": "^2.0.0-rc.2"
+    "lit": "^2.0.0"
   },
   "devDependencies": {
-    "@types/node": "^15.12.2",
-    "vite": "^2.3.7"
+    "@types/node": "^16.10.2",
+    "vite": "^2.6.2"
   }
 }
