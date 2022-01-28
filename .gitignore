@@ -9,3 +9,4 @@ db
 dist/
 .env
 tmp.*
+yarn.lock

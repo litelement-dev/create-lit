@@ -1,6 +1,6 @@
 {
   "name": "create-lit",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "main": "index.js",
   "license": "MIT",
   "repository": {
@@ -20,21 +20,21 @@
     "templates"
   ],
   "dependencies": {
-    "common-tags": "^1.8.0",
+    "common-tags": "^1.8.2",
     "create-create-app": "^7.1.0"
   },
   "devDependencies": {
     "@types/common-tags": "^1.8.1",
-    "@types/node": "^16.10.2",
-    "@typescript-eslint/eslint-plugin": "^4.32.0",
-    "@typescript-eslint/parser": "^4.32.0",
+    "@types/node": "^17.0.13",
+    "@typescript-eslint/eslint-plugin": "^4.33.0",
+    "@typescript-eslint/parser": "^4.33.0",
     "eslint": "^7.32.0",
     "eslint-config-google": "^0.14.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^3.4.1",
-    "prettier": "^2.4.1",
-    "shx": "^0.3.3",
+    "prettier": "^2.5.1",
+    "shx": "^0.3.4",
     "tsup": "^4.14.0",
-    "typescript": "^4.4.3"
+    "typescript": "^4.5.5"
   }
 }
