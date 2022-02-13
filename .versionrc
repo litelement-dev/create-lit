@@ -1,0 +1,19 @@
+{
+  "header": "# Changelog\n\n<!-- markdownlint-disable MD001 MD012 MD024 MD034 -->\n\nAll notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.\n",
+  "types": [
+    {"type": "chore", "section": "Chore"},
+    {"type": "feat", "section": "Features"},
+    {"type": "fix", "section": "Bug Fixes"},
+    {"type": "build", "section": "Build System"},
+    {"type": "refactor", "section": "Improvements"},
+    {"type": "perf", "section": "Improvements"},
+    {"type": "docs", "section": "Documentation"},
+    {"type": "revert", "section": "Roll Back"},
+    {"type": "style", "section": "Styling"},
+    {"type": "test", "section": "Tests"},
+    {"type": "ci", "section": "CI", "hidden": true}
+  ],
+  "scripts": {
+    "prerelease": "git fetch --tags"
+  }
+}

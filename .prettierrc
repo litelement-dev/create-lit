@@ -1,16 +1,20 @@
 {
-	"printWidth": 80,
-	"bracketSpacing": false,
+	"printWidth": 200,
+	"bracketSpacing": true,
 	"htmlWhitespaceSensitivity": "css",
 	"insertPragma": false,
 	"jsxBracketSameLine": true,
 	"jsxSingleQuote": false,
 	"proseWrap": "preserve",
+	"arrowParens": "avoid",
 	"quoteProps": "as-needed",
 	"requirePragma": false,
 	"semi": true,
-	"singleQuote": true,
+	"singleQuote": false,
 	"tabWidth": 4,
 	"trailingComma": "none",
-	"useTabs": false
+	"useTabs": true,
+	"plugins": [
+		"./node_modules/prettier-plugin-import-sort"
+	]
 }

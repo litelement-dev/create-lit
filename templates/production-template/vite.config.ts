@@ -10,31 +10,32 @@ import app from './package.json';
 
 const babelConfig: RollupBabelInputPluginOptions = {
 	babelHelpers: 'bundled',
+	extensions: ['.js', '.jsx', '.ts', '.tsx'],
+	exclude: [/\bcore-js\b/],
+	babelrc: false,
 	plugins: [
 		['@babel/plugin-proposal-decorators', { decoratorsBeforeExport: true }],
 		'@babel/plugin-syntax-dynamic-import',
 		'@babel/plugin-syntax-import-meta',
 		'@babel/plugin-proposal-export-default-from'
 	],
-	babelrc: false,
-	presets: [['@babel/preset-env', { targets: { chrome: '72' }, debug: true }]]
+	presets: [['@babel/preset-env', { targets: { chrome: '65' }, useBuiltIns: 'usage', corejs: '3', debug: false }]]
 };
 
 const copyConfig: CopyOptions = {
 	hook: 'closeBundle',
 	targets: [
-        { src: 'node_modules/@webcomponents/webcomponentsjs/*', dest: 'dist/node_modules/@webcomponents/webcomponentsjs' },
+		{ src: 'node_modules/@webcomponents/webcomponentsjs/*', dest: 'dist/node_modules/@webcomponents/webcomponentsjs' },
 		{ src: 'public/index.universal.html', dest: 'dist', rename: 'index.html' },
 		{ src: 'res', dest: 'dist' }
 	]
 };
-let development = process.env.NODE_ENV != 'production';
 
 // https://vitejs.dev/config/
 export default (opts: { mode: 'production' | 'development'; command: 'build' | 'serve' }) => {
 	return defineConfig({
 		server: {
-			port: Number(process.env.PORT || 3000) 
+			port: Number(process.env.PORT || 3000)
 		},
 		define: {
 			'process.env.NODE_ENV': JSON.stringify(opts.mode),
@@ -43,6 +44,9 @@ export default (opts: { mode: 'production' | 'development'; command: 'build' | '
 		plugins: [],
 		build: {
 			assetsInlineLimit: 100000,
+			commonjsOptions: {
+				sourceMap: false
+			},
 			rollupOptions: {
 				input: {
 					app: './src/lit-app.ts'
@@ -53,7 +57,7 @@ export default (opts: { mode: 'production' | 'development'; command: 'build' | '
 				// and SystemJS modules
 				output: {
 					// Legacy JS bundles (ES5 compilation and SystemJS module output)
-					format: 'systemjs',
+					format: 'esm',
 					chunkFileNames: `${process.env.NODE_ENV == 'development' ? '[name].' : 'c.'}[hash].js`,
 					entryFileNames: '[name].bundle.js',
 					dir: 'dist'
@@ -67,15 +71,18 @@ export default (opts: { mode: 'production' | 'development'; command: 'build' | '
 					// Copy res to dist folder
 					copy(copyConfig),
 					// Minify JS
-                    terser({
-                        format: {
-                            comments: false
-                        },
-                        compress: false,
-                        module: true
-                    }),
+					terser({
+						format: {
+							comments: false
+						},
+						compress: false,
+						module: true
+					}),
 					// Print bundle summary
-					summary({}) as any
+					summary({
+						showMinifiedSize: false,
+						showGzippedSize: false
+					}) as any
 				],
 				preserveEntrySignatures: false
 			}
