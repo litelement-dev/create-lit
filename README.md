@@ -29,24 +29,37 @@ npm run dev
 -->
 
 ## Creating an App
+
 You’ll need to have Node >= 10 on your system
 
 To create a new app, you may choose one of the following methods:
+
 ### npx
 
 ```bash
 npx create-lit my-app
 ```
+
 (npx comes with npm 5.2+ and higher, see instructions for older npm versions)
 
+### PNPM
+
+```bash
+pnpm dlx create-lit my-app
+```
+
 ### Yarn
+
 ```bash
 yarn create lit my-app
 ```
-yarn create is available in Yarn 0.25+
 
 ### npm
+
 ```bash
 npm init lit my-app
 ```
-npm init <initializer> is available in npm 6+
+
+## Special mention
+
+Thanks to [@uetchy](https://github.com/uetchy) and the repo [create-create-app](https://github.com/uetchy/create-create-app) . This repo ports from CJS to ESM from [create-create-app](https://github.com/uetchy/create-create-app)
