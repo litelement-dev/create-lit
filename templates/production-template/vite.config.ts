@@ -1,11 +1,12 @@
 import { RollupBabelInputPluginOptions, babel } from '@rollup/plugin-babel';
-import resolve from '@rollup/plugin-node-resolve';
 import copy, { CopyOptions } from 'rollup-plugin-copy';
-import minifyHTML from 'rollup-plugin-minify-html-literals';
-import summary from 'rollup-plugin-summary';
-import { terser } from 'rollup-plugin-terser';
-import { defineConfig } from 'vite';
+import { Plugin, defineConfig } from 'vite';
 
+import resolve from '@rollup/plugin-node-resolve';
+import terser from '@rollup/plugin-terser';
+import { readFileSync } from 'node:fs';
+import minifyHTML from 'rollup-plugin-html-literals';
+import summary from 'rollup-plugin-summary';
 import app from './package.json';
 
 const babelConfig: RollupBabelInputPluginOptions = {
@@ -24,11 +25,31 @@ const babelConfig: RollupBabelInputPluginOptions = {
 
 const copyConfig: CopyOptions = {
 	hook: 'closeBundle',
-	targets: [
-		{ src: 'node_modules/@webcomponents/webcomponentsjs/*', dest: 'dist/node_modules/@webcomponents/webcomponentsjs' },
-		{ src: 'public/index.universal.html', dest: 'dist', rename: 'index.html' },
-		{ src: 'res', dest: 'dist' }
-	]
+	targets: [{ src: 'res', dest: 'dist' }]
+};
+export const svgLoader: () => Plugin = () => {
+	var regexSequences: [RegExp, string][] = [
+		// Remove XML stuffs and comments
+		[/<\?xml[\s\S]*?>/gi, ''],
+		[/<!doctype[\s\S]*?>/gi, ''],
+		[/<!--.*-->/gi, ''],
+
+		// SVG XML -> HTML5
+		[/\<([A-Za-z]+)([^\>]*)\/\>/g, '<$1$2></$1>'], // convert self-closing XML SVG nodes to explicitly closed HTML5 SVG nodes
+		[/\s+/g, ' '], // replace whitespace sequences with a single space
+		[/\> \</g, '><'] // remove whitespace between tags
+	];
+	const getExtractedSVG = (svgStr: string) => regexSequences.reduce((prev, regexSequence) => prev.replace(regexSequence[0], regexSequence[1]), svgStr).trim();
+	return {
+		name: 'vite-svg-patch-plugin',
+		transform: function (code, id) {
+			if (id.endsWith('.svg')) {
+				const extractedSvg = readFileSync(id, 'utf8');
+				return `export const value = '${getExtractedSVG(extractedSvg)}'\n;export default value`;
+			}
+			return code;
+		}
+	};
 };
 
 // https://vitejs.dev/config/
@@ -51,15 +72,10 @@ export default (opts: { mode: 'production' | 'development'; command: 'build' | '
 				input: {
 					app: './src/lit-app.ts'
 				},
-				// input: ['src/my-element.ts'],
-				// Specifies two JS output configurations, modern and legacy, which the HTML plugin will
-				// automatically choose between; the legacy build is compiled to ES5
-				// and SystemJS modules
 				output: {
-					// Legacy JS bundles (ES5 compilation and SystemJS module output)
 					format: 'esm',
-					chunkFileNames: `${process.env.NODE_ENV == 'development' ? '[name].' : 'c.'}[hash].js`,
-					entryFileNames: '[name].bundle.js',
+					chunkFileNames: `v${app.version}/${process.env.NODE_ENV == 'development' ? '[name].' : 'c.'}[hash].js`,
+					entryFileNames: `v${app.version}/[name].bundle.js`,
 					dir: 'dist'
 				},
 				plugins: [
@@ -82,7 +98,7 @@ export default (opts: { mode: 'production' | 'development'; command: 'build' | '
 					summary({
 						showMinifiedSize: false,
 						showGzippedSize: false
-					}) as any
+					})
 				],
 				preserveEntrySignatures: false
 			}

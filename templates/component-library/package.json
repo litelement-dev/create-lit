@@ -15,10 +15,10 @@
     "build": "vite build"
   },
   "dependencies": {
-    "lit": "^2.0.0"
+    "lit": "^3.2.1"
   },
   "devDependencies": {
-    "@types/node": "^16.10.2",
-    "vite": "^2.6.2"
+    "@types/node": "^22.7.7",
+    "vite": "^5.4.9"
   }
 }
