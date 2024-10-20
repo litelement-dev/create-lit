@@ -13,8 +13,5 @@
 	"singleQuote": false,
 	"tabWidth": 4,
 	"trailingComma": "none",
-	"useTabs": true,
-	"plugins": [
-		"./node_modules/prettier-plugin-import-sort"
-	]
+	"useTabs": true
 }
